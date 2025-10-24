@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jsPDF from 'jspdf';
-// Note: We assume 'number-to-words' is installed and correctly configured to be required.
 const numberToWords = require('number-to-words'); 
 
 // --- Interface for PayslipData (Required for TypeScript) ---
@@ -38,9 +37,9 @@ export async function POST(request: NextRequest) {
         const payslipData: PayslipData = await request.json(); 
         const pdfBuffer: Buffer = await generatePayslipPDF(payslipData);
         
-        // FIX: Use pdfBuffer.buffer to convert Node Buffer to ArrayBuffer, 
-        // which is assignable to BodyInit and resolves the type error.
-        return new Response(pdfBuffer.buffer, { 
+        // FIX: Use pdfBuffer.slice().buffer. This creates a new detached Buffer instance
+        // and then accesses its ArrayBuffer, resolving the strict SharedArrayBuffer type conflict.
+        return new Response(pdfBuffer.slice().buffer, { 
             status: 200,
             headers: {
                 'Content-Type': 'application/pdf',
