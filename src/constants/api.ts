@@ -1,1 +1,1 @@
-export const APIURL = 'https://dev.tirangadeims.com';
+export const APIURL = 'https://dev.tirangaidms.com';
