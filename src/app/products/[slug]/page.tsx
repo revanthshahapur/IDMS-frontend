@@ -1,9 +1,17 @@
 'use client';
 
 import { notFound } from 'next/navigation';
-import { Database, Users, DollarSign, Store, Target, BarChart3, FileText, Shield, Settings } from 'lucide-react';
+import { Database, Users, DollarSign, Store, Target, BarChart3, FileText, Shield, Settings, LucideIcon } from 'lucide-react';
 
-const productMeta: Record<string, { title: string; description: string; icon: any; }> = {
+// 1. Define the specific type for the component's props to prevent conflicts.
+interface ProductDetailPageProps {
+  params: { slug: string };
+  // Include searchParams for completeness, although not used here
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+// 2. Update the productMeta structure to use LucideIcon type for the icon
+const productMeta: Record<string, { title: string; description: string; icon: LucideIcon; }> = {
   'data-management': { title: 'Data Management', description: 'Centralize and organize all your business data in one secure platform.', icon: Database },
   'hr-management': { title: 'HR Management', description: 'Complete human resource management from hiring to retirement.', icon: Users },
   'finance-accounting': { title: 'Finance & Accounting', description: 'Streamlined financial management and accounting solutions.', icon: DollarSign },
@@ -15,7 +23,8 @@ const productMeta: Record<string, { title: string; description: string; icon: an
   'integration-tools': { title: 'Integration Tools', description: 'Seamlessly integrate with your existing business tools.', icon: Settings },
 };
 
-export default function ProductDetailPage({ params }: { params: { slug: string } }) {
+// 3. Use the newly defined interface (ProductDetailPageProps)
+export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   const meta = productMeta[params.slug];
   if (!meta) return notFound();
   const Icon = meta.icon;
@@ -40,5 +49,3 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
     </main>
   );
 }
-
-
