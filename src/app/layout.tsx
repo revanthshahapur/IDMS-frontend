@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 
 // ✅ UPDATED Metadata for greytHR theme
 export const metadata: Metadata = {
-  title: "greytHR | India's Leading Payroll & HR Software",
+  title: "Tiranga IDMS",
   description: "Simplify HR, payroll, attendance, and compliance with India's most trusted cloud-based HR management system. Request a free demo today.",
 };
 
