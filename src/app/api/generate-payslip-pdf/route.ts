@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jsPDF from 'jspdf';
+// Note: We assume 'number-to-words' is installed and correctly configured to be required.
 const numberToWords = require('number-to-words'); 
 
 // --- Interface for PayslipData (Required for TypeScript) ---
@@ -30,14 +31,16 @@ const formatCurrency = (amount: number): string => {
 };
 
 // ********************************************************************
-// POST HANDLER (Solves the 405 Method Not Allowed error)
+// POST HANDLER (Contains the required fix)
 // ********************************************************************
 export async function POST(request: NextRequest) {
     try {
         const payslipData: PayslipData = await request.json(); 
-        const pdfBuffer = await generatePayslipPDF(payslipData);
+        const pdfBuffer: Buffer = await generatePayslipPDF(payslipData);
         
-        return new Response(pdfBuffer, {
+        // FIX: Use pdfBuffer.buffer to convert Node Buffer to ArrayBuffer, 
+        // which is assignable to BodyInit and resolves the type error.
+        return new Response(pdfBuffer.buffer, { 
             status: 200,
             headers: {
                 'Content-Type': 'application/pdf',
@@ -55,7 +58,7 @@ export async function POST(request: NextRequest) {
 
 
 // ********************************************************************
-// PDF GENERATION UTILITY (generatePayslipPDF) - FINAL SCOPE FIX
+// PDF GENERATION UTILITY (generatePayslipPDF)
 // ********************************************************************
 async function generatePayslipPDF(data: PayslipData): Promise<Buffer> {
     const doc = new jsPDF();
