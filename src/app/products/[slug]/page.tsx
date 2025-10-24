@@ -2,7 +2,6 @@
 
 import { notFound } from 'next/navigation';
 import { Database, Users, DollarSign, Store, Target, BarChart3, FileText, Shield, Settings, LucideIcon } from 'lucide-react';
-// The explicit interface ProductDetailPageProps is removed to prevent the type conflict.
 
 // 1. Define productMeta with all required entries and correct LucideIcon type.
 const productMeta: Record<string, { title: string; description: string; icon: LucideIcon; }> = {
