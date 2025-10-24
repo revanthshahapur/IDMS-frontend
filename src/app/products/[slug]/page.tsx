@@ -2,19 +2,11 @@
 
 import { notFound } from 'next/navigation';
 import { Database, Users, DollarSign, Store, Target, BarChart3, FileText, Shield, Settings, LucideIcon } from 'lucide-react';
-// The import for Metadata and ResolvingMetadata is unnecessary for this Client Component, but harmless.
-// import type { Metadata, ResolvingMetadata } from 'next';
+// The explicit interface ProductDetailPageProps is removed to prevent the type conflict.
 
-// 1. Define the props type using the official Next.js App Router structure.
-interface ProductDetailPageProps {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-// 2. Define productMeta with all required entries (including placeholder rest of productMeta)
+// 1. Define productMeta with all required entries and correct LucideIcon type.
 const productMeta: Record<string, { title: string; description: string; icon: LucideIcon; }> = {
   'data-management': { title: 'Data Management', description: 'Centralize and organize all your business data in one secure platform.', icon: Database },
-  // ⚠️ Placeholder: You MUST add the rest of your product entries here for the build to pass.
   'hr-management': { title: 'HR Management', description: 'Complete human resource management from hiring to retirement.', icon: Users },
   'finance-accounting': { title: 'Finance & Accounting', description: 'Streamlined financial management and accounting solutions.', icon: DollarSign },
   'inventory-management': { title: 'Inventory Management', description: 'Track and manage your inventory with real-time insights.', icon: Store },
@@ -26,8 +18,8 @@ const productMeta: Record<string, { title: string; description: string; icon: Lu
 };
 
 
-// 3. Use the correct type and define the function only once.
-export default function ProductDetailPage({ params }: ProductDetailPageProps) {
+// 2. Use the correct inline type definition for props to bypass the PageProps constraint conflict.
+export default function ProductDetailPage({ params, searchParams }: { params: { slug: string }, searchParams?: { [key: string]: string | string[] | undefined } }) {
   const meta = productMeta[params.slug];
   if (!meta) return notFound();
   const Icon = meta.icon;
