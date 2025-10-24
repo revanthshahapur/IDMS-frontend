@@ -239,7 +239,7 @@ export default function HRLayout({ children }: { children: React.ReactNode }) {
         setLoading(true);
         // Mock API data to display the UI correctly
         const mockEmployee = {
-            employeeName: 'Bharath',
+            employeeName: '',
             position: 'HR Manager',
             profilePhotoUrl: '', // You can add a URL here if you have one
         };
