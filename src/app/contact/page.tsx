@@ -9,8 +9,9 @@ export default function ContactPage() {
         <div className="p-6 bg-white rounded-xl shadow border border-gray-100 max-w-xl">
           <div className="space-y-2 text-gray-700">
             <div><span className="font-semibold">Email:</span> info@idms.com</div>
-            <div><span className="font-semibold">Phone:</span> +1 (555) 123-4567</div>
-            <div><span className="font-semibold">Address:</span> 123 Data Street, Tech City, CA 94000</div>
+            <div><span className="font-semibold">Phone:</span> 080-48905416</div>
+            <div><span className="font-semibold">Address:</span> 2nd floor Hillside Meadows Layout, Adityanagar, Vidyaranyapura,
+Bengaluru - 560097</div>
           </div>
         </div>
       </div>

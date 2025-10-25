@@ -973,18 +973,19 @@ href="/login"
               </div>
               <div className="flex items-center">
                 <Phone className="w-4 h-4 mr-2 text-blue-400" />
-                <span>+1 (555) 123-4567</span>
+                <span>080-48905416</span>
               </div>
               <div className="flex items-start">
                 <MapPin className="w-4 h-4 mt-1 mr-2 text-blue-400 flex-shrink-0" />
-                <span>123 Data Street, Tech City, CA 94000</span>
+                <span>2nd floor Hillside Meadows Layout, Adityanagar, Vidyaranyapura,
+Bengaluru - 560097</span>
               </div>
             </div>
           </div>
 
         </div>
         <div className="border-t border-gray-700 mt-8 pt-6 container mx-auto px-4 text-center text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} IDMS Technologies Private Limited. All rights reserved.
+          &copy; {new Date().getFullYear()}  Tiranga Aerospace, All Rights Reserved.
         </div>
       </footer>
 
