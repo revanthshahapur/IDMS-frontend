@@ -20,7 +20,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 
 // FIX: Define placeholder URL and Loader since they can't be imported in this environment
-const APIURL = "http://localhost:8080"; 
+const APIURL = "${APIURL}
+"; 
 const Loader = () => <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>;
 
 // --- Interfaces (Defined based on backend models) ---

@@ -79,7 +79,8 @@ type MenuItem =
 
 
 
-const APIURL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+const APIURL = process.env.NEXT_PUBLIC_API_URL || '${APIURL}
+';
 
 
 const poppins = Poppins({

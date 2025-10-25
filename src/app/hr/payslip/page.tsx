@@ -23,7 +23,8 @@ interface EmployeePayrollDTO {
 }
 // ------------------------------------------------------------------------
 
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = '${APIURL}
+';
 
 // Month-Year Picker Component
 const MonthYearSelectorComponent: React.FC<{ month: number; year: number; onChange: (month: number, year: number) => void }> = ({ month, year, onChange }) => {
@@ -138,7 +139,8 @@ const HRPayslipManagerPage: React.FC = () => {
                     errorMessage = details || `Request failed with status ${status}`;
                 }
             } else if (error.request) {
-                 errorMessage = `Could not reach Spring Boot service (http://localhost:8080) or Next.js service is unreachable.`;
+                 errorMessage = `Could not reach Spring Boot service (${APIURL}
+) or Next.js service is unreachable.`;
             } 
             
             setStatus(`Generation failed for ${actionText}: ${errorMessage}`);

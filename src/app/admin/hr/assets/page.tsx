@@ -4,7 +4,8 @@ import { Search, Filter, Eye, X, Laptop, Package } from 'lucide-react';
 import { Toaster } from 'react-hot-toast'; 
 
 // API URL is declared here to make the component self-contained
-const APIURL = 'http://localhost:8080';
+const APIURL = '${APIURL}
+';
 const API_BASE_URL = APIURL + '/api';
 
 interface Asset {
