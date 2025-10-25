@@ -30,14 +30,16 @@ const formatCurrency = (amount: number): string => {
 };
 
 // ********************************************************************
-// POST HANDLER (Solves the 405 Method Not Allowed error)
+// POST HANDLER (Contains the required fix)
 // ********************************************************************
 export async function POST(request: NextRequest) {
     try {
         const payslipData: PayslipData = await request.json(); 
-        const pdfBuffer = await generatePayslipPDF(payslipData);
+        const pdfBuffer: Buffer = await generatePayslipPDF(payslipData);
         
-        return new Response(pdfBuffer, {
+        // FIX: Use pdfBuffer.slice().buffer. This creates a new detached Buffer instance
+        // and then accesses its ArrayBuffer, resolving the strict SharedArrayBuffer type conflict.
+        return new Response(pdfBuffer.slice().buffer, { 
             status: 200,
             headers: {
                 'Content-Type': 'application/pdf',
@@ -55,7 +57,7 @@ export async function POST(request: NextRequest) {
 
 
 // ********************************************************************
-// PDF GENERATION UTILITY (generatePayslipPDF) - FINAL SCOPE FIX
+// PDF GENERATION UTILITY (generatePayslipPDF)
 // ********************************************************************
 async function generatePayslipPDF(data: PayslipData): Promise<Buffer> {
     const doc = new jsPDF();

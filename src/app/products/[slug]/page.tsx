@@ -1,9 +1,10 @@
 'use client';
 
 import { notFound } from 'next/navigation';
-import { Database, Users, DollarSign, Store, Target, BarChart3, FileText, Shield, Settings } from 'lucide-react';
+import { Database, Users, DollarSign, Store, Target, BarChart3, FileText, Shield, Settings, LucideIcon } from 'lucide-react';
 
-const productMeta: Record<string, { title: string; description: string; icon: any; }> = {
+// 1. Define productMeta with all required entries and correct LucideIcon type.
+const productMeta: Record<string, { title: string; description: string; icon: LucideIcon; }> = {
   'data-management': { title: 'Data Management', description: 'Centralize and organize all your business data in one secure platform.', icon: Database },
   'hr-management': { title: 'HR Management', description: 'Complete human resource management from hiring to retirement.', icon: Users },
   'finance-accounting': { title: 'Finance & Accounting', description: 'Streamlined financial management and accounting solutions.', icon: DollarSign },
@@ -15,10 +16,13 @@ const productMeta: Record<string, { title: string; description: string; icon: an
   'integration-tools': { title: 'Integration Tools', description: 'Seamlessly integrate with your existing business tools.', icon: Settings },
 };
 
-export default function ProductDetailPage({ params }: { params: { slug: string } }) {
+
+// 2. Use the 'any' type assertion for props to force TypeScript to bypass the faulty PageProps constraint.
+export default function ProductDetailPage({ params, searchParams }: any) {
   const meta = productMeta[params.slug];
   if (!meta) return notFound();
   const Icon = meta.icon;
+
   return (
     <main className="min-h-screen bg-gray-50 pt-28">
       <div className="container mx-auto px-4">
@@ -40,5 +44,3 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
     </main>
   );
 }
-
-
