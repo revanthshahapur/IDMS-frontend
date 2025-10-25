@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import toast, { Toaster } from 'react-hot-toast';
 import { APIURL } from '@/constants/api';
+import Loader from '@/components/Loader';
 
 
 interface FormData {
@@ -157,7 +158,7 @@ export default function LoginPage() {
         storeAuthData(data);
         
         // Show success message
-        toast.success('Login successful!');
+        // toast.success('Login successful!');
         
         // If employee login and has employee data, redirect to employee page
         if (loginAsEmployee && data.employeeId) {
@@ -370,7 +371,7 @@ export default function LoginPage() {
               >
                 {loading ? (
                   <div className="flex items-center justify-center space-x-2">
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    <Loader />
                     <span>Signing In...</span>
                   </div>
                 ) : (
