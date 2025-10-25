@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { Search, Filter, Eye, X, Laptop, Package } from 'lucide-react';
 import { Toaster } from 'react-hot-toast'; 
 
+import { APIURL } from '@/constants/api';
+
 // API URL is declared here to make the component self-contained
-const APIURL = '${APIURL}
-';
-const API_BASE_URL = APIURL + '/api';
+const API_BASE_URL = `${APIURL}/api/assets`;
 
 interface Asset {
     id?: number;

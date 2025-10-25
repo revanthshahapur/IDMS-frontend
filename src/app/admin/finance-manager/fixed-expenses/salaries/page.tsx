@@ -7,7 +7,8 @@ import Link from 'next/link';
 import { APIURL } from '@/constants/api';
 
 // The API URL is defined for fetching data.
-const API_ENDPOINT = '/api/salaries'; 
+const API_ENDPOINT = `${APIURL}/api/salaries`;
+
 
 
 interface SalaryExpense {

@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { File, Search, Filter, User, FileText, CreditCard, Briefcase, GraduationCap, LucideIcon, Eye } from 'lucide-react';
 // FIX: Removed unused imports: Download, X, and toast
 import { Toaster } from 'react-hot-toast';
+import { APIURL } from '@/constants/api';
 
 // Assuming APIURL is correctly defined and points to your backend
-const APIURL = '${APIURL}
-';
+const API_BASE_URL = `${APIURL}/api/documents`;
 
 interface Document {
 	id: number;
