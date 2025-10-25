@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 import { DocumentTextIcon, UsersIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import toast, { Toaster } from 'react-hot-toast';
 import Link from 'next/link';
+import { APIURL } from '@/constants/api';
 
 // The API URL is defined for fetching data.
-const APIURL = '${APIURL}
-';
+const API_ENDPOINT = '/api/salaries'; 
+
 
 interface SalaryExpense {
     id: number;
