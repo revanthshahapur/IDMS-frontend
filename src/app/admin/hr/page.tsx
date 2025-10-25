@@ -73,7 +73,8 @@ export default function HRDashboard() {
             setLoadingStats(true);
             setLoadingEmployees(true);
             try {
-                const employeesResponse = await fetch('http://localhost:8080api/employees');
+                const employeesResponse = await fetch('${APIURL}
+api/employees');
                 if (!employeesResponse.ok) {
                     throw new Error('Failed to fetch employees');
                 }
@@ -108,7 +109,8 @@ export default function HRDashboard() {
         const fetchActivities = async () => {
             setLoadingActivities(true);
             try {
-                const activitiesResponse = await fetch('http://localhost:8080api/activities');
+                const activitiesResponse = await fetch('${APIURL}
+api/activities');
                 if (!activitiesResponse.ok) {
                     throw new Error('Failed to fetch activities');
                 }

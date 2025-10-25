@@ -52,7 +52,8 @@ const transformActivityFromApiResponse = (apiActivity: ApiActivityResponse): Act
 	notes: apiActivity.notes,
 });
 
-const API_BASE_URL = 'http://localhost:8080api/activities';
+const API_BASE_URL = '${APIURL}
+api/activities';
 
 const activitiesAPI = {
 	getAll: async (): Promise<Activity[]> => {

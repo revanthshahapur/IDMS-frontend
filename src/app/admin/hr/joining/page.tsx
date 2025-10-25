@@ -14,7 +14,8 @@ import {
 import { Toaster } from 'react-hot-toast'; // FIX: Removed unused 'toast'
 import Image from 'next/image'; // FIX: Added Next.js Image component
 
-const APIURL = 'http://localhost:8080';
+const APIURL = '${APIURL}
+';
 const API_BASE_URL = APIURL + '/api/employees';
 
 // Step 1: Update the Employee interface to include a profile photo URL

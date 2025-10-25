@@ -68,7 +68,8 @@ interface PayslipMetadata {
 // 2. CONFIGURATION & HELPERS
 // ====================================================================
 
-const API_BASE_URL = 'http://localhost:8080'; // Ensure this matches your Spring Boot server port
+const API_BASE_URL = '${APIURL}
+'; // Ensure this matches your Spring Boot server port
 
 const formatCurrency = (amount: number): string => {
     return amount.toLocaleString('en-IN', {
